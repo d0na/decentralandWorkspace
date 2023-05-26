@@ -1,0 +1,29 @@
+{
+  "name": "PUB Wearable",
+  "description": "Upper Body PUB",
+  "rarity": "mythic",
+  "data": {
+    "replaces": ["upper_body],
+    "hides": [],
+    "tags": [
+      "PUB upper body",
+      "PUB"],
+    "representations": [
+      {
+        "bodyShapes": [
+          "urn:decentraland:off-chain:base-avatars:BaseMale",
+          "urn:decentraland:off-chain:base-avatars:BaseFemale"
+        ],
+        "mainFile": "TSUB.glb",
+        "contents": [
+          "TSUB.glb"
+        ],
+        "overrideHides": [],
+        "overrideReplaces": []
+      }
+    ],
+    "category": "upper_body"
+  },
+
+}
+
