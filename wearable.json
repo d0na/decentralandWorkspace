@@ -3,7 +3,7 @@
   "description": "Upper Body PUB",
   "rarity": "mythic",
   "data": {
-    "replaces": ["upper_body],
+    "replaces": ["upper_body"],
     "hides": [],
     "tags": [
       "PUB upper body",
@@ -23,7 +23,5 @@
       }
     ],
     "category": "upper_body"
-  },
-
+  }
 }
-
