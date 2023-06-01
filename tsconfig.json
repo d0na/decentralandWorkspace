@@ -17,5 +17,10 @@
     "src/**/*.ts"
   ],
   "extends": "./node_modules/decentraland-ecs/types/tsconfig.json",
-  "compileOnSave": false
+  "compileOnSave": false,
+  "define": {
+    "IS_LOCAL_PREVIEW": true,
+    "IS_TEST_ENV": false,
+    "USE_SEPOLIA_NETWORK": true
+  }
 }

@@ -1,9 +1,10 @@
 /// --- Set up a system ---
 
 import {buildWall, spawnCube, spawnLabelledCube} from "./functions/scene-utils"
-import {getUserAccount} from "@decentraland/EthereumController";
+import {getUserAccount,} from "@decentraland/EthereumController";
 import {globalCanvas} from "./canvas";
 import {MyCube} from "./components/MyCube/MyCube";
+import { gestioneEsami } from "./functions/blockchain/functions";
 
 
 /**
@@ -63,10 +64,11 @@ let mainWall = buildWall(
 mainWall.addComponent(
     new OnPointerDown(() => {
             log("Trying to do things with ethereum")
+            
             executeTask(async () => {
                 try {
-                    const address = await getUserAccount()
-                    log("User address:",address)
+                    gestioneEsami()
+                    //log("User address:",address)
                 } catch (error: any) {
                     log(error.toString())
                 }
