@@ -32,18 +32,11 @@ gltfShape.isPointerBlocker = true
 gltfShape.visible = true
 bermudaGrass.addComponentOrReplace(gltfShape)
 const transform2 = new Transform({
-    position: new Vector3(8, 0, 7),
+    position: new Vector3(8, 0, 8.1),
     rotation: new Quaternion(0, 0, 0, 1),
     scale: new Vector3(1, 1, 1)
 })
 bermudaGrass.addComponentOrReplace(transform2)
-
-
-    executeTask(async () => {
-        const { mana } = await l2.createComponents()
-        const balanceWei = await mana.balance('0x21387C745c98f092C376151197E68e56E33de81e')
-        log(balanceWei)
-    })
 
 const messageBubble = new Entity('messageBubble')
 engine.addEntity(messageBubble)
@@ -69,7 +62,7 @@ const floorMetal = new Entity('floorMetal')
 engine.addEntity(floorMetal)
 floorMetal.setParent(_scene)
 const transform5 = new Transform({
-    position: new Vector3(8, 0, 7),
+    position: new Vector3(8, 0, 8),
     rotation: new Quaternion(0, 0, 0, 1),
     scale: new Vector3(1, 1, 1)
 })

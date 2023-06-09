@@ -30,5 +30,7 @@
       "rows": 1,
       "cols": 1
     }
-  }
+  },
+  "requiredPermissions": ["USE_WEB3_API","USE_WEBSOCKET"]
+
 }
