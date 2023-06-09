@@ -30,7 +30,7 @@ gltfShape.isPointerBlocker = true
 gltfShape.visible = true
 bermudaGrass.addComponentOrReplace(gltfShape)
 const transform2 = new Transform({
-    position: new Vector3(8, 0, 8),
+    position: new Vector3(8, 0, 7),
     rotation: new Quaternion(0, 0, 0, 1),
     scale: new Vector3(1, 1, 1)
 })
@@ -75,7 +75,7 @@ const floorMetal2 = new Entity('floorMetal2')
 engine.addEntity(floorMetal2)
 floorMetal2.setParent(_scene)
 const transform6 = new Transform({
-    position: new Vector3(12, 0, 7),
+    position: new Vector3(12, 0, 8),
     rotation: new Quaternion(0, 0, 0, 1),
     scale: new Vector3(1, 1, 1)
 })
@@ -391,16 +391,16 @@ const script7 = new Script7()
 const script8 = new Script8()
 const script9 = new Script9()
 const script10 = new Script10()
-script1.init(options)
-script2.init(options)
-script3.init(options)
-script4.init(options)
-script5.init(options)
-script6.init(options)
-script7.init(options)
-script8.init(options)
-script9.init(options)
-script10.init(options)
+script1.init()
+script2.init()
+script3.init()
+script4.init()
+script5.init()
+script6.init()
+script7.init()
+script8.init()
+script9.init()
+script10.init()
 script1.spawn(messageBubble, {
     "text": "Welcome to \nthe PUB Shop.",
     "fontSize": 20

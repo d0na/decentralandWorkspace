@@ -43,9 +43,9 @@ export default class Button implements IScript<Props> {
              * */
             const colorUI = new ui.CustomPrompt(ui.PromptStyles.DARKLARGE, null, null)
 
-            colorUI.addText('Select the color for the jacket :', 0, 170, Color4.White(), 25)
+            colorUI.addText('Change the color of the jacket :', 0, 170, Color4.White(), 25)
 
-            colorUI.addText('Choose your preference', 0, 150, Color4.Gray(), 20)
+            colorUI.addText('Choose your color', 0, 150, Color4.Gray(), 20)
 // colorUI.addSwitch(
 //     'Radio On',
 //     -170,
