@@ -1,3 +1,4 @@
+import { testHalloWorld} from "../../blockchain/test"
 export type Props = {
     onClick?: Actions
     jacket: GLTFShape
@@ -41,6 +42,16 @@ export default class Button implements IScript<Props> {
 
                     const pushAction = channel.createAction('push', {})
                     channel.sendActions([pushAction])
+
+
+                    executeTask(async () => {
+                        try {
+                            testHalloWorld()
+                            //log("User address:",address)
+                        } catch (error: any) {
+                            log(error.toString())
+                        }
+                    })
                 },
                 {
                     button: ActionButton.POINTER,
@@ -59,3 +70,5 @@ export default class Button implements IScript<Props> {
         })
     }
 }
+
+
