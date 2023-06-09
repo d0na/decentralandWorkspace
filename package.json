@@ -14,11 +14,21 @@
     "decentraland-ecs": "latest"
   },
   "dependencies": {
+    "@dcl/l2-scene-utils": "^2.0.0",
     "@dcl/ui-scene-utils": "^1.8.4",
     "decentraland-builder-scripts": "latest",
-    "decentraland-ecs": "latest"
+    "decentraland-ecs": "latest",
+    "decentraland-transactions": "^1.46.0",
+    "eth-connect": "^6.1.0"
   },
   "bundledDependencies": [
-    "@dcl/ui-scene-utils"
+    "@dcl/ui-scene-utils",
+    "eth-connect"
+  ],
+  "bundleDependencies": [
+    "@dcl/l2-scene-utils",
+    "@dcl/ui-scene-utils",
+    "decentraland-transactions",
+    "eth-connect"
   ]
 }

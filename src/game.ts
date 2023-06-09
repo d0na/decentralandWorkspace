@@ -11,6 +11,8 @@ import Script8 from "../89d3e0e7-b9cd-406e-bd95-8abba3b37cc6/src/item"
 import Script9 from "../76d3a347-02b1-4c74-bbf3-7787ede6a3b1/src/item"
 import Script10 from "../504cd7ac-2873-40d8-9172-13c9c24304b0/src/item"
 import * as ui from '@dcl/ui-scene-utils'
+import * as l2 from '@dcl/l2-scene-utils'
+
 
 const _scene = new Entity('_scene')
 engine.addEntity(_scene)
@@ -36,11 +38,18 @@ const transform2 = new Transform({
 })
 bermudaGrass.addComponentOrReplace(transform2)
 
+
+    executeTask(async () => {
+        const { mana } = await l2.createComponents()
+        const balanceWei = await mana.balance('0x21387C745c98f092C376151197E68e56E33de81e')
+        log(balanceWei)
+    })
+
 const messageBubble = new Entity('messageBubble')
 engine.addEntity(messageBubble)
 messageBubble.setParent(_scene)
 const transform3 = new Transform({
-    position: new Vector3(11, 2, 6.5),
+    position: new Vector3(11, 2, 6.4),
     rotation: new Quaternion(0, 0, 0, 1),
     scale: new Vector3(1, 1, 1)
 })
@@ -50,7 +59,7 @@ const galleryInfoPeach = new Entity('galleryInfoPeach')
 engine.addEntity(galleryInfoPeach)
 galleryInfoPeach.setParent(_scene)
 const transform4 = new Transform({
-    position: new Vector3(7, 0, 7),
+    position: new Vector3(7, 0, 8),
     rotation: new Quaternion(-3.647312859448703e-15, 1, -1.1920926823449918e-7, 2.9802322387695312e-8),
     scale: new Vector3(1, 1, 1)
 })
