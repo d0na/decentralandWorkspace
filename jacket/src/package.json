@@ -1,5 +1,5 @@
 {
-  "name": "0ad0fc18-0a04-4b06-a00f-50c98217d5df",
+  "name": "dcl-project",
   "version": "1.0.0",
   "description": "My new Decentraland project",
   "scripts": {
@@ -11,19 +11,9 @@
     "ecs:install-next": "npm install --save-dev decentraland-ecs@next"
   },
   "devDependencies": {
-    "decentraland-ecs": "^6.12.0"
+    "decentraland-ecs": "^6.6.1-20201008141239.commit-6001543"
   },
   "dependencies": {
-    "@dcl/ui-scene-utils": "^1.8.4",
-    "decentraland-builder-scripts": "latest",
-    "eth-connect": "^6.2.0"
-  },
-  "bundledDependencies": [
-    "@dcl/ui-scene-utils",
-    "eth-connect"
-  ],
-  "bundleDependencies": [
-    "@dcl/ui-scene-utils",
-    "eth-connect"
-  ]
+    "decentraland-builder-scripts": "^0.24.0"
+  }
 }

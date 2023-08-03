@@ -1,6 +1,6 @@
 export type Props = {
     onClick?: Actions
-    jacket: GLTFShape
+    jacket?: GLTFShape
 }
 
 export default class Button implements IScript<Props> {
@@ -37,7 +37,7 @@ export default class Button implements IScript<Props> {
             new OnPointerDown(
                 () => {
                     log("Clicked red button", props.jacket)
-                    props.jacket.visible = !props.jacket.visible;
+                    //props.jacket.visible = !props.jacket.visible;
 
                     const pushAction = channel.createAction('push', {})
                     channel.sendActions([pushAction])
