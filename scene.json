@@ -17,6 +17,8 @@
     ],
     "base": "0,0"
   },
+  "requiredPermissions": ["USE_WEB3_API","USE_WEBSOCKET"]
+,
   "source": {
     "version": 1,
     "origin": "builder",

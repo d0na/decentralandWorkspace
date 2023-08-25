@@ -9,9 +9,9 @@ import Script6 from "../68986c60-c95c-41ab-adf0-d0e02f5b5440/src/item";
 import Script7 from "../683aa047-8043-40f8-8d31-beb7ab1b138c/src/item";
 import Script8 from "../89d3e0e7-b9cd-406e-bd95-8abba3b37cc6/src/item";
 import Script9 from "../76d3a347-02b1-4c74-bbf3-7787ede6a3b1/src/item";
-import Script10 from "../504cd7ac-2873-40d8-9172-13c9c24304b0/src/item";
-import JacketScript from "../jacket/src/item"
-import * as ui from "@dcl/ui-scene-utils";
+import BlueBtnScript from "../504cd7ac-2873-40d8-9172-13c9c24304b0/src/item";
+import BlueBtn3Script from "../504cd7ac-2873-40d8-9172-13c9c24304b0/src/other";
+import JacketScript from "../jacket/src/item";
 
 const _scene = new Entity("_scene");
 engine.addEntity(_scene);
@@ -117,34 +117,31 @@ const transform8 = new Transform({
 });
 radio.addComponentOrReplace(transform8);
 
-
 // JACKET
 const jacket = new Entity("jacket");
 engine.addEntity(jacket);
 jacket.setParent(_scene);
 const transformHoodieJacket = new Transform({
-    position: new Vector3(8, -0.5, 6.5),
-    scale: new Vector3(.5,.5,.5),
-    rotation: new Quaternion(
-      -5.9889282423531646e-15,
-      -1,
-      1.1920926823449918e-7,
-      0
-    ),
-  })
-  const transformArmoredJacket = new Transform({
-    position: new Vector3(8, 2, 6.6),
-    scale: new Vector3(0.01,0.01,0.01),
-    rotation: new Quaternion(
-      -5.9889282423531646e-15,
-      -1,
-      1.1920926823449918e-7,
-      0
-    ),
-  })
+  position: new Vector3(8, -0.5, 6.5),
+  scale: new Vector3(0.5, 0.5, 0.5),
+  rotation: new Quaternion(
+    -5.9889282423531646e-15,
+    -1,
+    1.1920926823449918e-7,
+    0
+  ),
+});
+const transformArmoredJacket = new Transform({
+  position: new Vector3(8, 2, 6.6),
+  scale: new Vector3(0.01, 0.01, 0.01),
+  rotation: new Quaternion(
+    -5.9889282423531646e-15,
+    -1,
+    1.1920926823449918e-7,
+    0
+  ),
+});
 jacket.addComponentOrReplace(transformArmoredJacket);
-
-
 
 // /**
 //  * Add a Jacket asset on the scene
@@ -178,14 +175,10 @@ jacket.addComponentOrReplace(transformArmoredJacket);
 //         new OnPointerHoverEnter((e) => {
 //             log("Started Pointing at entity")
 //           })
-        
+
 //       )
 
 // jacketEntity.setParent(_scene);
-
-
-
-
 
 const armchairRed = new Entity("armchairRed");
 engine.addEntity(armchairRed);
@@ -419,13 +412,13 @@ const redButton = new Entity("redButton");
 engine.addEntity(redButton);
 redButton.setParent(_scene);
 const transform27 = new Transform({
-  position: new Vector3(8, 0, 8),
-  rotation: new Quaternion(0, 0, 0, 1),
+  position: new Vector3(8.2, 1.5, 7.8),
+  rotation: new Quaternion(-5.837282663256806e-15, 1, -1, 0),
   scale: new Vector3(1, 1, 1),
 });
 redButton.addComponentOrReplace(transform27);
 
-const redButton2 = new Entity("redButton2");
+const redButton2 = new Entity("redButton2") ;
 engine.addEntity(redButton2);
 redButton2.setParent(_scene);
 const transform28 = new Transform({
@@ -455,6 +448,16 @@ const transform30 = new Transform({
 });
 blueButton.addComponentOrReplace(transform30);
 
+const blueButton3 = new Entity("blueButton3");
+engine.addEntity(blueButton3);
+blueButton3.setParent(_scene);
+const transform33 = new Transform({
+  position: new Vector3(11.2, 1.5, 6.8),
+  rotation: new Quaternion(-5.837282663256806e-15, 1, -1, 0),
+  scale: new Vector3(1, 1, 1),
+});
+blueButton3.addComponentOrReplace(transform33);
+
 const channelId = Math.random().toString(16).slice(2);
 const channelBus = new MessageBus();
 const inventory = createInventory(UICanvas, UIContainerStack, UIImage);
@@ -469,7 +472,8 @@ const script6 = new Script6();
 const script7 = new Script7();
 const script8 = new Script8();
 const script9 = new Script9();
-const script10 = new Script10();
+const bluBtnScript = new BlueBtnScript();
+const bluBtnScript3 = new BlueBtn3Script();
 const scriptJacket = new JacketScript();
 
 script1.init();
@@ -481,7 +485,7 @@ script6.init();
 script7.init();
 script8.init();
 script9.init();
-script10.init();
+bluBtnScript.init();
 script1.spawn(
   messageBubble,
   {
@@ -493,8 +497,7 @@ script1.spawn(
 script2.spawn(
   galleryInfoPeach,
   {
-    text:
-      "PUBShop wear your suit\n\nPress:\n\n -red: show/hide jacket\n -green: change color\n - blue: other",
+    text: "PUBShop wear your suit\n\nPress:\n\n -red: show/hide jacket\n -green: change color\n - blue: other",
     fontSize: 5,
     font: "SF",
     color: "#000000",
@@ -520,7 +523,6 @@ script4.spawn(
   },
   createChannel(channelId, radio, channelBus)
 );
-
 
 script5.spawn(
   nftPictureFrame2,
@@ -586,16 +588,29 @@ script9.spawn(
   },
   createChannel(channelId, greenButton, channelBus)
 );
-script10.spawn(
+bluBtnScript.spawn(
   blueButton,
   {
     onClick: [
       {
         entityName: "toolbox",
         actionId: "print",
-        values: { message: "changeOther", duration: 5, multiplayer: true },
+        values: { message: "changeOther ", duration: 5, multiplayer: true },
+      },
+      {
+        entityName: "toolbox",
+        actionId: "print",
+        values: {
+          message: "changeOther due      ",
+          duration: 5,
+          multiplayer: true,
+        },
       },
     ],
   },
   createChannel(channelId, blueButton, channelBus)
+);
+bluBtnScript3.spawn(
+  blueButton3,{},
+  createChannel(channelId, blueButton3, channelBus)
 );

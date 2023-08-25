@@ -33,7 +33,7 @@ export default class PlainText implements IScript<Props> {
     text.paddingTop = 0
     text.paddingLeft = 0
     text.paddingRight = 0
-    text.zIndex = 1
+    // text.zIndex = 1
 
     text.lineCount = 10
     text.hTextAlign = 'center'

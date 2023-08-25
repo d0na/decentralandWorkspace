@@ -2,6 +2,7 @@ import * as ui from "@dcl/ui-scene-utils";
 
 export type Props = {
   onClick?: Actions
+  pippo?: (a)=>void 
 }
 
 export default class Button implements IScript<Props> {
