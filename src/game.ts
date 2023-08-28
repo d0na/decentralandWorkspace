@@ -476,6 +476,33 @@ const bluBtnScript = new BlueBtnScript();
 const bluBtnScript3 = new BlueBtn3Script();
 const scriptJacket = new JacketScript();
 
+const blueButtonText3 = new Entity();
+const text3Dmodel = new TextShape("3dModel");
+text3Dmodel.font=new Font(Fonts.SansSerif_SemiBold);
+text3Dmodel.fontSize = 1;
+text3Dmodel.color = Color3.White();
+blueButtonText3.addComponent(text3Dmodel);
+blueButtonText3.addComponent(new Transform({
+  position: new Vector3(11.2, 1.3, 6.8),
+  // rotation: new Quaternion(-5.837282663256806e-15, 1, -1, 0),
+  scale: new Vector3(1, 1, 1),
+}));
+engine.addEntity(blueButtonText3);
+
+const blueButtonText = new Entity();
+const textOwnership = new TextShape("Ownership");
+textOwnership.font=new Font(Fonts.SansSerif_SemiBold);
+textOwnership.fontSize = 1;
+textOwnership.color = Color3.White();
+blueButtonText.addComponent(textOwnership);
+blueButtonText.addComponent(new Transform({
+  position: new Vector3(10.2, 1.3, 6.8),
+  // rotation: new Quaternion(-5.837282663256806e-15, 1, -1, 0),
+  scale: new Vector3(1, 1, 1),
+}));
+engine.addEntity(blueButtonText);
+
+
 script1.init();
 script2.init();
 script3.init();
@@ -547,6 +574,7 @@ script6.spawn(
   createChannel(channelId, indicatorArrow2, channelBus)
 );
 script7.spawn(toolbox, {}, createChannel(channelId, toolbox, channelBus));
+
 script8.spawn(
   redButton2,
   {
@@ -561,6 +589,8 @@ script8.spawn(
   },
   createChannel(channelId, redButton2, channelBus)
 );
+
+
 scriptJacket.spawn(
   jacket,
   {
@@ -601,7 +631,7 @@ bluBtnScript.spawn(
         entityName: "toolbox",
         actionId: "print",
         values: {
-          message: "changeOther due      ",
+          message: "changeOther due  ",
           duration: 5,
           multiplayer: true,
         },

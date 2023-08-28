@@ -51,24 +51,6 @@ export default class Button implements IScript<Props> {
         }
       });
 
-      const owner = await executeTask(async () => {
-        try {
-          return JacketMNTContract.owner();
-        } catch (error) {
-          log("Blockchain error ---> " + error.toString());
-        }
-      });
-
-      const ownerOf = await executeTask(async () => {
-        try {
-          return JacketMNTContract.ownerOf(
-            "1226717128970246035244283915921829702259618206299"
-          );
-        } catch (error) {
-          log("Blockchain error ---> " + error.toString());
-        }
-      });
-
       const model = await executeTask(async () => {
         try {
           const jacketAssetContract = await bc.getJacketAssetContract(
@@ -86,25 +68,7 @@ export default class Button implements IScript<Props> {
             entityName: "toolbox",
             actionId: "print",
             values: {
-              message: "JacketOwner " + owner + "\n",
-              duration: 5,
-              multiplayer: true,
-            },
-          },
-          {
-            entityName: "toolbox",
-            actionId: "print",
-            values: {
               message: "JacketModel " + model + "\n",
-              duration: 5,
-              multiplayer: true,
-            },
-          },
-          {
-            entityName: "toolbox",
-            actionId: "print",
-            values: {
-              message: "JacketModel (ownerOf) " + ownerOf + "\n",
               duration: 5,
               multiplayer: true,
             },

@@ -146,26 +146,13 @@ export default class Button implements IScript<Props> {
       });
 
 
-      const model = await executeTask(async () => {
-        try {
-          const jacketAssetContract = await bc.getJacketAssetContract(
-            requestManager
-          );
-          return await jacketAssetContract.get3DModel();
-        } catch (error) {
-          log("JacektMnt error ---> " + error.toString());
-        }
-      });
-
-
-
       if (sender === channel.id) {
         channel.sendActions([
           {
             entityName: "toolbox",
             actionId: "print",
             values: {
-              message: "JacketOwner " + owner+"\n",
+              message: "JacketOwner (creator) " + owner+"\n",
               duration: 5,
               multiplayer: true,
             },
@@ -174,16 +161,7 @@ export default class Button implements IScript<Props> {
             entityName: "toolbox",
             actionId: "print",
             values: {
-              message: "JacketModel " + model+'\n',
-              duration: 5,
-              multiplayer: true,
-            },
-          },
-          {
-            entityName: "toolbox",
-            actionId: "print",
-            values: {
-              message: "JacketModel (ownerOf) " + ownerOf+'\n',
+              message: "JacketOwner (current) " + ownerOf+'\n',
               duration: 5,
               multiplayer: true,
             },
