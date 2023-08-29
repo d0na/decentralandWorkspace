@@ -18,6 +18,8 @@ export async function getJacketMncContract(requestManager) {
 export async function getJacketAssetContract(requestManager) {
   const nmtContract = await getJacketMncContract(requestManager);
   const jacketAssetAdr = await nmtContract.getJacketAddress();
+  log("(getJacketAssetContract) - JacketAddress",jacketAssetAdr)
+  log("(getJacketAssetContract) - TokenID",await nmtContract.getJacketIntAddress())
   const factory = new ContractFactory(requestManager, JacketAsset_ABI);
   return (await factory.at(jacketAssetAdr)) as any;
 }

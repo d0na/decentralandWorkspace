@@ -43,6 +43,19 @@ export default [
     type: "event",
   },
   {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "string",
+        name: "color",
+        type: "string",
+      },
+    ],
+    name: "StateChanged",
+    type: "event",
+  },
+  {
     inputs: [
       {
         internalType: "string",
@@ -58,6 +71,30 @@ export default [
     name: "changeColor",
     outputs: [],
     stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "string",
+        name: "str1",
+        type: "string",
+      },
+      {
+        internalType: "string",
+        name: "str2",
+        type: "string",
+      },
+    ],
+    name: "compare",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
+    stateMutability: "pure",
     type: "function",
   },
   {
@@ -84,6 +121,32 @@ export default [
       },
     ],
     stateMutability: "pure",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "getModel3d",
+    outputs: [
+      {
+        internalType: "string",
+        name: "",
+        type: "string",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "model3d",
+    outputs: [
+      {
+        internalType: "string",
+        name: "",
+        type: "string",
+      },
+    ],
+    stateMutability: "view",
     type: "function",
   },
   {

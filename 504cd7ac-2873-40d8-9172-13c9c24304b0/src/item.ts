@@ -1,3 +1,4 @@
+import { JACKET_MNT_ADDRESS } from "blockchain/artifacts/addresses";
 import * as bc from "../../blockchain/getJacketMnt";
 
 export type Props = {
@@ -136,10 +137,27 @@ export default class Button implements IScript<Props> {
         }
       });
 
+      const tokenAddress = await executeTask(async () => {
+        try {
+          return JacketMNTContract.getJacketAddress()  
+        } catch (error) {
+          log("Blockchain error ---> " + error.toString());
+        }
+      }); 
+
+      const tokenId = await executeTask(async () => {
+        try {
+          return JacketMNTContract.getJacketIntAddress()  
+        } catch (error) {
+          log("Blockchain error ---> " + error.toString());
+        }
+      }); 
+
 
       const ownerOf = await executeTask(async () => {
         try {
-          return JacketMNTContract.ownerOf('1226717128970246035244283915921829702259618206299')  
+          log("TokenId",tokenId)
+          return JacketMNTContract.ownerOf(tokenId)  
         } catch (error) {
           log("Blockchain error ---> " + error.toString());
         }
@@ -152,7 +170,15 @@ export default class Button implements IScript<Props> {
             entityName: "toolbox",
             actionId: "print",
             values: {
-              message: "JacketOwner (creator) " + owner+"\n",
+              message: "JacketNMT contract: " + JACKET_MNT_ADDRESS+"\n",
+              duration: 5,
+              multiplayer: true,
+            },
+          },{
+            entityName: "toolbox",
+            actionId: "print",
+            values: {
+              message: "JacketNMT address: " + tokenAddress+"\n",
               duration: 5,
               multiplayer: true,
             },
@@ -161,7 +187,16 @@ export default class Button implements IScript<Props> {
             entityName: "toolbox",
             actionId: "print",
             values: {
-              message: "JacketOwner (current) " + ownerOf+'\n',
+              message: "JacketOwner (creator): " + owner+"\n",
+              duration: 5,
+              multiplayer: true,
+            },
+          },
+          {
+            entityName: "toolbox",
+            actionId: "print",
+            values: {
+              message: "JacketOwner (ownerOf): " + ownerOf+'\n',
               duration: 5,
               multiplayer: true,
             },

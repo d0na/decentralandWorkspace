@@ -7,10 +7,12 @@ import Script4 from "../901e4555-8743-49bb-854c-c8b354a3e3e1/src/item";
 import Script5 from "../80d9cb1c-2fcf-4585-8e19-e2d5621fd54d/src/item";
 import Script6 from "../68986c60-c95c-41ab-adf0-d0e02f5b5440/src/item";
 import Script7 from "../683aa047-8043-40f8-8d31-beb7ab1b138c/src/item";
-import Script8 from "../89d3e0e7-b9cd-406e-bd95-8abba3b37cc6/src/item";
-import Script9 from "../76d3a347-02b1-4c74-bbf3-7787ede6a3b1/src/item";
+import RedBtnScript2 from "../89d3e0e7-b9cd-406e-bd95-8abba3b37cc6/src/item";
+import RedBtnScript from "../89d3e0e7-b9cd-406e-bd95-8abba3b37cc6/src/other";
+import GreenBtnScript from "../76d3a347-02b1-4c74-bbf3-7787ede6a3b1/src/item";
+import GreenBtnScript2 from "../76d3a347-02b1-4c74-bbf3-7787ede6a3b1/src/other";
 import BlueBtnScript from "../504cd7ac-2873-40d8-9172-13c9c24304b0/src/item";
-import BlueBtn3Script from "../504cd7ac-2873-40d8-9172-13c9c24304b0/src/other";
+import BlueBtnScript2 from "../504cd7ac-2873-40d8-9172-13c9c24304b0/src/other";
 import JacketScript from "../jacket/src/item";
 
 const _scene = new Entity("_scene");
@@ -408,11 +410,92 @@ const transform26 = new Transform({
 });
 toolbox.addComponentOrReplace(transform26);
 
+/** TEXT */
+const textMint = new TextShape("Mint");
+textMint.font=new Font(Fonts.SansSerif_SemiBold);
+textMint.fontSize = 1;
+textMint.color = Color3.White();
+
+const textNoAct = new TextShape("noAct");
+textNoAct.font=new Font(Fonts.SansSerif_SemiBold);
+textNoAct.fontSize = 1;
+textNoAct.color = Color3.White();
+
+const textChangeColor = new TextShape("ChangeColor");
+textChangeColor.font=new Font(Fonts.SansSerif_SemiBold);
+textChangeColor.fontSize = 1;
+textChangeColor.textWrapping = true;
+textChangeColor.color = Color3.White();
+
+const text3Dmodel = new TextShape("3dModel");
+text3Dmodel.font=new Font(Fonts.SansSerif_SemiBold);
+text3Dmodel.fontSize = 1;
+text3Dmodel.color = Color3.White();
+
+const textOwnership = new TextShape("Ownership");
+textOwnership.font=new Font(Fonts.SansSerif_SemiBold);
+textOwnership.fontSize = 1;
+textOwnership.color = Color3.White();
+
+/** Text entities */
+const redButtonText = new Entity();
+redButtonText.addComponent(textNoAct);
+redButtonText.addComponent(new Transform({
+  position: new Vector3(9.2, 1.3, 6.8),
+  scale: new Vector3(1, 1, 1),
+}));
+engine.addEntity(redButtonText);
+
+const redButtonText2 = new Entity();
+redButtonText2.addComponent(textMint);
+redButtonText2.addComponent(new Transform({
+  position: new Vector3(9.2, 0.7, 6.8),
+  scale: new Vector3(1, 1, 1),
+}));
+engine.addEntity(redButtonText2);
+
+const greeButtonText = new Entity();
+greeButtonText.addComponent(textChangeColor);
+greeButtonText.addComponent(new Transform({
+  position: new Vector3(10, 1.3, 6.8),
+  scale: new Vector3(1, 1, 1),
+}));
+engine.addEntity(greeButtonText);
+
+const greeButtonText2 = new Entity();
+greeButtonText2.addComponent(textNoAct);
+greeButtonText2.addComponent(new Transform({
+  position: new Vector3(10, 0.7, 6.8),
+  scale: new Vector3(1, 1, 1),
+}));
+engine.addEntity(greeButtonText2);
+
+const blueButtonText = new Entity();
+blueButtonText.addComponent(textOwnership);
+blueButtonText.addComponent(new Transform({
+  position: new Vector3(10.7, 1.3, 6.8),
+  scale: new Vector3(1, 1, 1),
+}));
+engine.addEntity(blueButtonText);
+
+const blueButtonText2 = new Entity();
+blueButtonText2.addComponent(text3Dmodel);
+blueButtonText2.addComponent(new Transform({
+  position: new Vector3(10.7, 0.7, 6.8),
+  scale: new Vector3(1, 1, 1),
+}));
+engine.addEntity(blueButtonText2);
+
+/******************** */
+
+
+/** BUTTONs */
+
 const redButton = new Entity("redButton");
 engine.addEntity(redButton);
 redButton.setParent(_scene);
 const transform27 = new Transform({
-  position: new Vector3(8.2, 1.5, 7.8),
+  position: new Vector3(9.2, 1, 6.8),
   rotation: new Quaternion(-5.837282663256806e-15, 1, -1, 0),
   scale: new Vector3(1, 1, 1),
 });
@@ -432,31 +515,45 @@ const greenButton = new Entity("greenButton");
 engine.addEntity(greenButton);
 greenButton.setParent(_scene);
 const transform29 = new Transform({
-  position: new Vector3(9.7, 1.5, 6.8),
+  position: new Vector3(10, 1.5, 6.8),
   rotation: new Quaternion(-5.837282663256806e-15, 1, -1, 0),
   scale: new Vector3(1, 1, 1),
 });
 greenButton.addComponentOrReplace(transform29);
 
+const greenButton2 = new Entity("greenButton2");
+engine.addEntity(greenButton2);
+greenButton2.setParent(_scene);
+const transform35 = new Transform({
+  position: new Vector3(10, 1, 6.8),
+  rotation: new Quaternion(-5.837282663256806e-15, 1, -1, 0),
+  scale: new Vector3(1, 1, 1),
+});
+greenButton2.addComponentOrReplace(transform35);
+
 const blueButton = new Entity("blueButton");
 engine.addEntity(blueButton);
 blueButton.setParent(_scene);
 const transform30 = new Transform({
-  position: new Vector3(10.2, 1.5, 6.8),
+  position: new Vector3(10.7, 1.5, 6.8),
   rotation: new Quaternion(-5.837282663256806e-15, 1, -1, 0),
   scale: new Vector3(1, 1, 1),
 });
 blueButton.addComponentOrReplace(transform30);
 
-const blueButton3 = new Entity("blueButton3");
-engine.addEntity(blueButton3);
-blueButton3.setParent(_scene);
+const blueButton2 = new Entity("blueButton3");
+engine.addEntity(blueButton2);
+blueButton2.setParent(_scene);
 const transform33 = new Transform({
-  position: new Vector3(11.2, 1.5, 6.8),
+  position: new Vector3(10.7, 1, 6.8),
   rotation: new Quaternion(-5.837282663256806e-15, 1, -1, 0),
   scale: new Vector3(1, 1, 1),
 });
-blueButton3.addComponentOrReplace(transform33);
+blueButton2.addComponentOrReplace(transform33);
+
+
+
+
 
 const channelId = Math.random().toString(16).slice(2);
 const channelBus = new MessageBus();
@@ -470,37 +567,14 @@ const script4 = new Script4();
 const script5 = new Script5();
 const script6 = new Script6();
 const script7 = new Script7();
-const script8 = new Script8();
-const script9 = new Script9();
+const redBtnScript2 = new RedBtnScript2();
+const redBtnScript = new RedBtnScript();
+const greenBtnScript = new GreenBtnScript();
+const greenBtnScript2 = new GreenBtnScript2();
 const bluBtnScript = new BlueBtnScript();
-const bluBtnScript3 = new BlueBtn3Script();
+const bluBtnScript2 = new BlueBtnScript2();
 const scriptJacket = new JacketScript();
 
-const blueButtonText3 = new Entity();
-const text3Dmodel = new TextShape("3dModel");
-text3Dmodel.font=new Font(Fonts.SansSerif_SemiBold);
-text3Dmodel.fontSize = 1;
-text3Dmodel.color = Color3.White();
-blueButtonText3.addComponent(text3Dmodel);
-blueButtonText3.addComponent(new Transform({
-  position: new Vector3(11.2, 1.3, 6.8),
-  // rotation: new Quaternion(-5.837282663256806e-15, 1, -1, 0),
-  scale: new Vector3(1, 1, 1),
-}));
-engine.addEntity(blueButtonText3);
-
-const blueButtonText = new Entity();
-const textOwnership = new TextShape("Ownership");
-textOwnership.font=new Font(Fonts.SansSerif_SemiBold);
-textOwnership.fontSize = 1;
-textOwnership.color = Color3.White();
-blueButtonText.addComponent(textOwnership);
-blueButtonText.addComponent(new Transform({
-  position: new Vector3(10.2, 1.3, 6.8),
-  // rotation: new Quaternion(-5.837282663256806e-15, 1, -1, 0),
-  scale: new Vector3(1, 1, 1),
-}));
-engine.addEntity(blueButtonText);
 
 
 script1.init();
@@ -510,9 +584,10 @@ script4.init();
 script5.init();
 script6.init();
 script7.init();
-script8.init();
-script9.init();
+redBtnScript2.init();
+greenBtnScript.init();
 bluBtnScript.init();
+bluBtnScript2.init();
 script1.spawn(
   messageBubble,
   {
@@ -524,7 +599,7 @@ script1.spawn(
 script2.spawn(
   galleryInfoPeach,
   {
-    text: "PUBShop wear your suit\n\nPress:\n\n -red: show/hide jacket\n -green: change color\n - blue: other",
+    text: "\n\n\n\n\nPUBShop.\n Buy and wear your suit",
     fontSize: 5,
     font: "SF",
     color: "#000000",
@@ -575,7 +650,7 @@ script6.spawn(
 );
 script7.spawn(toolbox, {}, createChannel(channelId, toolbox, channelBus));
 
-script8.spawn(
+redBtnScript2.spawn(
   redButton2,
   {
     onClick: [
@@ -598,14 +673,14 @@ scriptJacket.spawn(
       {
         entityName: "toolbox",
         actionId: "print",
-        values: { message: "Show/hide jacket", duration: 5, multiplayer: true },
+        values: { message: "Checking changes on the NFT..", duration: 5, multiplayer: true },
       },
     ],
     // jacket: gltfShapeJacket,
   },
   createChannel(channelId, jacket, channelBus)
 );
-script9.spawn(
+greenBtnScript.spawn(
   greenButton,
   {
     onClick: [
@@ -618,6 +693,7 @@ script9.spawn(
   },
   createChannel(channelId, greenButton, channelBus)
 );
+
 bluBtnScript.spawn(
   blueButton,
   {
@@ -640,7 +716,33 @@ bluBtnScript.spawn(
   },
   createChannel(channelId, blueButton, channelBus)
 );
-bluBtnScript3.spawn(
-  blueButton3,{},
-  createChannel(channelId, blueButton3, channelBus)
+
+bluBtnScript2.spawn(
+  blueButton2,{},
+  createChannel(channelId, blueButton2, channelBus)
+);
+
+redBtnScript.spawn(
+  redButton,{onClick: [
+    {
+      entityName: "jacke",
+      actionId: "print",
+      values: { message: "changeColor", duration: 5, multiplayer: true },
+    },
+  ],},
+  createChannel(channelId, redButton, channelBus)
+);
+
+greenBtnScript2.spawn(
+  greenButton2,
+  {
+    onClick: [
+      {
+        entityName: "jacket",
+        actionId: "update",
+        values: { color: 'red' },
+      },
+    ],
+  },
+  createChannel(channelId, jacket, channelBus)
 );

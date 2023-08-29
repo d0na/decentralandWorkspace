@@ -12,9 +12,10 @@ export default class Button implements IScript<Props> {
   spawn(host: Entity, props: Props, channel: IChannel) {
     const button = new Entity();
     button.setParent(host);
+
     button.addComponent(
       new GLTFShape(
-        "504cd7ac-2873-40d8-9172-13c9c24304b0/models/Blue_Button.glb"
+        "76d3a347-02b1-4c74-bbf3-7787ede6a3b1/models/Green_Button.glb"
       )
     );
 
@@ -22,8 +23,6 @@ export default class Button implements IScript<Props> {
       new OnPointerDown(
         () => {
           // Button pressed logic
-          log("ButtoneBlu2");
-
           const pushAction = channel.createAction("push", {});
           channel.sendActions([pushAction]);
         },
@@ -45,14 +44,20 @@ export default class Button implements IScript<Props> {
         }
       );
 
-      const model = await executeTask(async () => {
+      const JacketMNTContract = await executeTask(async () => {
+        try {
+          return await bc.getJacketMncContract(requestManager);
+        } catch (error) {
+          log("Blockchain error ---> " + error.toString());
+        }
+      });
+
+      const changeColor = await executeTask(async () => {
         try {
           const jacketAssetContract = await bc.getJacketAssetContract(
             requestManager
           );
-          const a = await jacketAssetContract.getModel3d();
-          log("Model3d" + a);
-          return a;
+          return await jacketAssetContract.changeColor("green", "mario",{from: PUB_USER});
         } catch (error) {
           log("JacektMnt error ---> " + error.toString());
         }
@@ -64,16 +69,9 @@ export default class Button implements IScript<Props> {
             entityName: "toolbox",
             actionId: "print",
             values: {
-              message: "JacketModel " + model + "\n",
+              message: "JacketModel " + changeColor + "\n",
               duration: 5,
               multiplayer: true,
-            },
-          },
-          {
-            entityName: "jacket",
-            actionId: "update",
-            values: {
-              asset: model,
             },
           },
         ]);

@@ -1,6 +1,6 @@
 import * as ui from "@dcl/ui-scene-utils";
 import * as bc from "../../blockchain/getJacketMnt";
-import { PUB_USER } from "blockchain/artifacts/addresses";
+import { PUB_ONWER, PUB_USER } from "blockchain/artifacts/addresses";
 
 export type Props = {
   onClick?: Actions;
@@ -12,9 +12,10 @@ export default class Button implements IScript<Props> {
   spawn(host: Entity, props: Props, channel: IChannel) {
     const button = new Entity();
     button.setParent(host);
+
     button.addComponent(
       new GLTFShape(
-        "504cd7ac-2873-40d8-9172-13c9c24304b0/models/Blue_Button.glb"
+        "89d3e0e7-b9cd-406e-bd95-8abba3b37cc6/models/Red_Button.glb"
       )
     );
 
@@ -22,8 +23,6 @@ export default class Button implements IScript<Props> {
       new OnPointerDown(
         () => {
           // Button pressed logic
-          log("ButtoneBlu2");
-
           const pushAction = channel.createAction("push", {});
           channel.sendActions([pushAction]);
         },
@@ -45,14 +44,19 @@ export default class Button implements IScript<Props> {
         }
       );
 
-      const model = await executeTask(async () => {
+      const JacketMNTContract = await executeTask(async () => {
         try {
-          const jacketAssetContract = await bc.getJacketAssetContract(
-            requestManager
-          );
-          const a = await jacketAssetContract.getModel3d();
-          log("Model3d" + a);
-          return a;
+          return await bc.getJacketMncContract(requestManager);
+        } catch (error) {
+          log("Blockchain error ---> " + error.toString());
+        }
+      });
+
+      const mintResp = await executeTask(async () => {
+        try {
+          return await JacketMNTContract.mint(PUB_USER, {
+            from: PUB_ONWER,
+          })
         } catch (error) {
           log("JacektMnt error ---> " + error.toString());
         }
@@ -64,16 +68,9 @@ export default class Button implements IScript<Props> {
             entityName: "toolbox",
             actionId: "print",
             values: {
-              message: "JacketModel " + model + "\n",
+              message: "Jacket MINT " + mintResp + "\n",
               duration: 5,
               multiplayer: true,
-            },
-          },
-          {
-            entityName: "jacket",
-            actionId: "update",
-            values: {
-              asset: model,
             },
           },
         ]);
