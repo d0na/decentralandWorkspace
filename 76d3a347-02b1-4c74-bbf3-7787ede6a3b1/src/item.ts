@@ -151,12 +151,28 @@ export default class Button implements IScript<Props> {
               }
             }
           );
-          const colorUI = new ui.CustomPrompt(ui.PromptStyles.DARKLARGE, null, null)
-          colorUI.addText('Change the color for the jacket', 0, 170, Color4.White(), 25)
-          colorUI.addText('This is Mario\'s tailoring, choose a color', 0, 150, Color4.Gray(), 20)
+          const colorUI = new ui.CustomPrompt(
+            ui.PromptStyles.DARKLARGE,
+            null,
+            null
+          );
+          colorUI.addText(
+            "Change the color for the jacket",
+            0,
+            170,
+            Color4.White(),
+            25
+          );
+          colorUI.addText(
+            "This is Mario's tailoring, choose a color",
+            0,
+            150,
+            Color4.Gray(),
+            20
+          );
 
           colorUI.addButton(
-            'Yellow',
+            "Yellow",
             -100,
             -0,
             async () => {
@@ -165,20 +181,24 @@ export default class Button implements IScript<Props> {
                   const jacketAssetContract = await bc.getJacketAssetContract(
                     requestManager
                   );
-                  return await jacketAssetContract.changeColor("yellow", "mario",{from: PUB_USER});
+                  return await jacketAssetContract.changeColor(
+                    "yellow",
+                    "mario",
+                    { from: PUB_USER }
+                  );
                 } catch (error) {
                   log("JacektMnt error ---> " + error.toString());
                 }
               });
-              
-              log('Yellow')
-              colorUI.hide()
+
+              log("Yellow");
+              colorUI.hide();
             },
             ui.ButtonStyles.ROUNDWHITE
-          )
-          
+          );
+
           colorUI.addButton(
-            'Green',
+            "Green",
             -100,
             -50,
             async () => {
@@ -187,18 +207,22 @@ export default class Button implements IScript<Props> {
                   const jacketAssetContract = await bc.getJacketAssetContract(
                     requestManager
                   );
-                  return await jacketAssetContract.changeColor("green", "mario",{from: PUB_USER});
+                  return await jacketAssetContract.changeColor(
+                    "green",
+                    "mario",
+                    { from: PUB_USER }
+                  );
                 } catch (error) {
                   log("JacektMnt error ---> " + error.toString());
                 }
               });
-              colorUI.hide()
+              colorUI.hide();
             },
             ui.ButtonStyles.ROUNDWHITE
-          )
+          );
 
           colorUI.addButton(
-            'Red',
+            "Red",
             -100,
             -100,
             async () => {
@@ -207,15 +231,17 @@ export default class Button implements IScript<Props> {
                   const jacketAssetContract = await bc.getJacketAssetContract(
                     requestManager
                   );
-                  return await jacketAssetContract.changeColor("red", "mario",{from: PUB_USER});
+                  return await jacketAssetContract.changeColor("red", "mario", {
+                    from: PUB_USER,
+                  });
                 } catch (error) {
                   log("JacektMnt error ---> " + error.toString());
                 }
               });
-              colorUI.hide()
+              colorUI.hide();
             },
             ui.ButtonStyles.ROUNDWHITE
-          )
+          );
           /** fine */
         },
         {
@@ -230,7 +256,15 @@ export default class Button implements IScript<Props> {
       this.play(button);
 
       if (sender === channel.id) {
-        channel.sendActions(props.onClick);
+        channel.sendActions([
+          {
+            entityName: "jacket",
+            actionId: "update",
+            values: {
+              asset: {},
+            },
+          },
+        ]);
       }
     });
   }

@@ -14,6 +14,7 @@ import GreenBtnScript2 from "../76d3a347-02b1-4c74-bbf3-7787ede6a3b1/src/other";
 import BlueBtnScript from "../504cd7ac-2873-40d8-9172-13c9c24304b0/src/item";
 import BlueBtnScript2 from "../504cd7ac-2873-40d8-9172-13c9c24304b0/src/other";
 import JacketScript from "../jacket/src/item";
+import { SolidityEvent } from "eth-connect";
 
 const _scene = new Entity("_scene");
 engine.addEntity(_scene);
@@ -144,6 +145,12 @@ const transformArmoredJacket = new Transform({
   ),
 });
 jacket.addComponentOrReplace(transformArmoredJacket);
+
+
+
+
+
+
 
 // /**
 //  * Add a Jacket asset on the scene
@@ -411,7 +418,7 @@ const transform26 = new Transform({
 toolbox.addComponentOrReplace(transform26);
 
 /** TEXT */
-const textMint = new TextShape("Mint");
+const textMint = new TextShape("Buy\n(mint)");
 textMint.font=new Font(Fonts.SansSerif_SemiBold);
 textMint.fontSize = 1;
 textMint.color = Color3.White();
@@ -427,12 +434,12 @@ textChangeColor.fontSize = 1;
 textChangeColor.textWrapping = true;
 textChangeColor.color = Color3.White();
 
-const text3Dmodel = new TextShape("3dModel");
+const text3Dmodel = new TextShape("ViewJacket\n(3dModel)");
 text3Dmodel.font=new Font(Fonts.SansSerif_SemiBold);
 text3Dmodel.fontSize = 1;
 text3Dmodel.color = Color3.White();
 
-const textOwnership = new TextShape("Ownership");
+const textOwnership = new TextShape("Contracts\nOwnership");
 textOwnership.font=new Font(Fonts.SansSerif_SemiBold);
 textOwnership.fontSize = 1;
 textOwnership.color = Color3.White();

@@ -14,9 +14,9 @@
           "urn:decentraland:off-chain:base-avatars:BaseMale",
           "urn:decentraland:off-chain:base-avatars:BaseFemale"
         ],
-        "mainFile": "TSUB.glb",
+        "mainFile": "TSUB-red.glb",
         "contents": [
-          "TSUB.glb"
+          "TSUB.glb","TSUB-red.glb"
         ],
         "overrideHides": [],
         "overrideReplaces": []

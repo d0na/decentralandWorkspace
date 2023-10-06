@@ -44,36 +44,39 @@ export default class Button implements IScript<Props> {
         }
       );
 
-      const JacketMNTContract = await executeTask(async () => {
-        try {
-          return await bc.getJacketMncContract(requestManager);
-        } catch (error) {
-          log("Blockchain error ---> " + error.toString());
-        }
-      });
+      // const JacketMNTContract = await executeTask(async () => {
+      //   try {
+      //     return await bc.getJacketMncContract(requestManager);
+      //   } catch (error) {
+      //     log("Blockchain error ---> " + error.toString());
+      //   }
+      // });
 
-      const changeColor = await executeTask(async () => {
-        try {
-          const jacketAssetContract = await bc.getJacketAssetContract(
-            requestManager
-          );
-          return await jacketAssetContract.changeColor("green", "mario",{from: PUB_USER});
-        } catch (error) {
-          log("JacektMnt error ---> " + error.toString());
-        }
-      });
+      // const changeColor = await executeTask(async () => {
+      //   try {
+      //     const jacketAssetContract = await bc.getJacketAssetContract(
+      //       requestManager
+      //     );
+      //     return await jacketAssetContract.changeColor("green", "mario",{from: PUB_USER});
+      //   } catch (error) {
+      //     log("JacektMnt error ---> " + error.toString());
+      //   }
+      // });
+
+      log("call logBC")
+      bc.logBc()
 
       if (sender === channel.id) {
         channel.sendActions([
-          {
-            entityName: "toolbox",
-            actionId: "print",
-            values: {
-              message: "JacketModel " + changeColor + "\n",
-              duration: 5,
-              multiplayer: true,
-            },
-          },
+          // {
+          //   entityName: "toolbox",
+          //   actionId: "print",
+          //   values: {
+          //     message: "JacketModel " + changeColor + "\n",
+          //     duration: 5,
+          //     multiplayer: true,
+          //   },
+          // },
         ]);
       }
     });

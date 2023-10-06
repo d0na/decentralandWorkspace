@@ -54,9 +54,11 @@ export default class Button implements IScript<Props> {
 
       const mintResp = await executeTask(async () => {
         try {
-          return await JacketMNTContract.mint(PUB_USER, {
+          const minted =  await JacketMNTContract.mint(PUB_USER, {
             from: PUB_ONWER,
           })
+          log("minted jacket: ",minted)
+          return minted
         } catch (error) {
           log("JacektMnt error ---> " + error.toString());
         }
@@ -71,6 +73,12 @@ export default class Button implements IScript<Props> {
               message: "Jacket MINT " + mintResp + "\n",
               duration: 5,
               multiplayer: true,
+            },
+          },{
+            entityName: "jacket",
+            actionId: "update",
+            values: {
+              asset: {},
             },
           },
         ]);
